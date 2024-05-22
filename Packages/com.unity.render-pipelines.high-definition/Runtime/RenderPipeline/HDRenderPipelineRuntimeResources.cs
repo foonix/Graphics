@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace UnityEngine.Rendering.HighDefinition
 {
     [HDRPHelpURL("Default-Settings-Window")]
-    partial class HDRenderPipelineRuntimeResources : HDRenderPipelineResources
+    public partial class HDRenderPipelineRuntimeResources : HDRenderPipelineResources
     {
-        [Serializable, ReloadGroup]
+        [Serializable]
         public sealed class ShaderResources
         {
             // Defaults
@@ -428,14 +428,14 @@ namespace UnityEngine.Rendering.HighDefinition
 #endif
         }
 
-        [Serializable, ReloadGroup]
+        [Serializable]
         public sealed class MaterialResources
         {
 			[Reload("Runtime/RenderPipelineResources/Material/AreaLightCookieViewer.mat")]
             public Material areaLightCookieMaterial; // We also need one for the cookie because the emissive map is a keyword in our Unlit shader.
         }
 
-        [Serializable, ReloadGroup]
+        [Serializable]
         public sealed class TextureResources
         {
             // Debug
@@ -515,7 +515,7 @@ namespace UnityEngine.Rendering.HighDefinition
             public Texture2D defaultCloudMap;
         }
 
-        [Serializable, ReloadGroup]
+        [Serializable]
         public sealed class ShaderGraphResources
         {
             [Reload("Runtime/ShaderLibrary/SolidColor.shadergraph")]
@@ -524,7 +524,7 @@ namespace UnityEngine.Rendering.HighDefinition
             public Shader defaultFogVolumeShader;
         }
 
-        [Serializable, ReloadGroup]
+        [Serializable]
         public sealed class AssetResources
         {
             [Reload("Runtime/RenderPipelineResources/defaultDiffusionProfile.asset")]
@@ -543,10 +543,15 @@ namespace UnityEngine.Rendering.HighDefinition
             public Mesh pyramidMesh;
         }
 
+        [SerializeReference]
         public ShaderResources shaders;
+        [SerializeReference]
         public MaterialResources materials;
+        [SerializeReference]
         public TextureResources textures;
+        [SerializeReference]
         public ShaderGraphResources shaderGraphs;
+        [SerializeReference]
         public AssetResources assets;
     }
 }
